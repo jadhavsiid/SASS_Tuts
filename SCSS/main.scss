@@ -1,0 +1,83 @@
+@import './resets.scss';
+@import './variables.scss'; 
+
+// L-4: Functions in SASS
+@function weight($weight-name){
+    @return map-get($font-weights, $weight-name);
+}
+
+// L-1: Variables in SASS
+
+// Way to add variable in normal css 
+// :root {
+//     --primary-color: #272727;
+//     --accent-color: #ff652f;
+//     --text-color: #fff;
+// }
+// body {
+//     background: var(--primary-color);
+// }
+
+// Way to add variable in sass 
+
+$primary-color: #272727;
+$accent-color: #ff652f;
+$text-color: #fff;
+
+body {
+    background: $primary-color;
+}
+
+//L-2:  Maps in SASS
+$font-weights: (
+    "regular":400,
+    "medium": 500,
+    "bold": 700
+);
+
+// L-5: Mixin in SASS
+@mixin flexcenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+
+}
+@mixin theme($light-theme:true){
+    @if $light-theme{
+        background: lighten($primary-color, 100%);
+        color: darken($text-color,100%);
+    }
+}
+@mixin mobile {
+    @media (max-width: $mobile){
+        @content;
+    }
+    
+}
+
+body {
+    color: $text-color ;
+}
+
+.main {
+    width: 80%;
+    margin: 0 auto;
+
+    // Nesting one entitiy inside other
+    #{&}_paragraph {
+        font-weight: weight(bold);
+
+        &:hover{
+            color: pink;
+        }
+    }
+    @include flexcenter(row);
+    @include mobile{
+        flex-direction: column;
+
+    }
+}
+.light{
+    @include theme($light-theme:false);
+}

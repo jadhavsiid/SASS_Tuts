@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #272727;
+}
+
+body {
+  color: #fff;
+}
+
+.main {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.main .main_paragraph {
+  font-weight: 700;
+}
+.main .main_paragraph:hover {
+  color: pink;
+}
+@media (max-width: 800px) {
+  .main {
+    flex-direction: column;
+  }
+}/*# sourceMappingURL=main.css.map */
